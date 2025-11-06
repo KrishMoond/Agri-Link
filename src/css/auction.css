@@ -1,0 +1,16 @@
+.back-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top:20px; /* Space between the link and cards */
+    text-decoration: none;
+    color: #81ae56;  /* Color of the text and icon */
+  }
+  
+  .back-link:hover {
+    color: #81ae56; /* Color when hovering */
+  }
+  
+  .back-link span {
+    margin-left: 15px; /* Space between the icon and text */
+  }

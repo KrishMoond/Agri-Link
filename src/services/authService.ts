@@ -14,7 +14,7 @@ export interface RegisterData {
   location: string[];
   gender: string;
   dob: string;
-  role: 'buyer' | 'seller';
+  role: 'buyer' | 'farmer' | 'retailer' | 'expert';
   gstNumber?: string;
   farmerCardNumber?: string;
 }
@@ -29,7 +29,16 @@ export const authService = {
   },
 
   async register(data: RegisterData) {
-    const response = await apiClient.post('/auth/register', data);
+    const formattedData = {
+      ...data,
+      location: {
+        state: data.location[0],
+        district: data.location[1],
+        village: data.location[2],
+        pincode: data.location[3]
+      }
+    };
+    const response = await apiClient.post('/auth/register', formattedData);
     const { token, user } = response.data;
     setAuthToken(token);
     setCurrentUser(user);
